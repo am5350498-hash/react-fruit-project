@@ -22,7 +22,7 @@ function Navbar() {
     "transition duration-200 hover:text-blue-400";
 
   return (
-    <nav className="bg-gray-900 text-white shadow-lg">
+   <nav className="sticky top-0 z-50 w-full bg-gray-900 text-white shadow-lg">
       <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -31,7 +31,7 @@ function Navbar() {
             onClick={closeMenu}
             className="text-2xl font-extrabold tracking-wide text-blue-400"
           >
-            Dairy<span className="text-white">Fresh</span>
+            Fruit<span className="text-white">Mart</span>
           </Link>
 
           {/* Desktop Menu */}
