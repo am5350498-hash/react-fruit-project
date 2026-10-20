@@ -58,7 +58,6 @@ function Product_det() {
   return (
     <>
       <Navbar />
-      <Navbar />
 
 <ToastContainer
   position="top-right"
