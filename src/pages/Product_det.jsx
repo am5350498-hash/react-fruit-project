@@ -4,6 +4,8 @@ import Navbar from "../Comman/Navbar";
 import Footer from "../Comman/Footer";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Product_det() {
   const {product_id} = useParams();
@@ -24,21 +26,47 @@ function Product_det() {
     })
   },[])
 
-  function addToCard(){
-    var obj={
-      "product_id":product_id,
-    "token":localStorage.getItem("token")
-    }
-    axios.post("https://a2zithub.org/dairy/abi/addtocart",obj).then((res)=>{
-       console.log(("response",res.data))
+ function addToCard() {
+  const obj = {
+    product_id: product_id,
+    token: localStorage.getItem("token"),
+  };
+
+  axios
+    .post("https://a2zithub.org/dairy/abi/addtocart", obj)
+    .then((res) => {
+      console.log("Response:", res.data);
+
+      toast.success("Product Added Successfully", {
+        position: "top-right",
+        autoClose: 3000,
+        theme: "light",
+      });
     })
-  }
+    .catch((err) => {
+      console.error("Add to cart error:", err);
+
+      toast.error("Failed to add product!", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+    });
+}
 
 
   
   return (
     <>
       <Navbar />
+      <Navbar />
+
+<ToastContainer
+  position="top-right"
+  autoClose={3000}
+  newestOnTop
+  closeOnClick
+  pauseOnHover
+/>
 
       <section className="min-h-screen bg-gray-50 px-4 py-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
